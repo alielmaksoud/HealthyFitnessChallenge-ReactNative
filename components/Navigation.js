@@ -12,7 +12,7 @@ const Navigation = (props) => {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Healthy Fitness Challenge',
+          title: '',
           headerStyle: {
             backgroundColor: '#52B788',
           },
@@ -22,7 +22,20 @@ const Navigation = (props) => {
           },
         }}
       />
-      <Stack.Screen name="Challenge" component={ChallengeScreen} />
+      <Stack.Screen
+        name="Challenge"
+        component={ChallengeScreen}
+        options={{
+          title: '',
+          headerStyle: {
+            backgroundColor: '#52B788',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };
