@@ -5,6 +5,7 @@ export default StyleSheet.create({
     color: '#40916C',
     fontSize: 30,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   text: {
     color: '#40916C',
