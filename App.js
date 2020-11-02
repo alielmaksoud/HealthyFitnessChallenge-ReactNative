@@ -4,7 +4,7 @@ import {StatusBar} from 'react-native';
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar backgroundColor="#52B788" />
     </>
   );
 };
