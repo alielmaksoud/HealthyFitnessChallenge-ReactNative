@@ -1,23 +1,20 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Text, View, ImageBackground} from 'react-native';
+import styledView from '../styledComponents/styledView';
+import styledBackgroundImage from '../styledComponents/styledBackgroundImage';
+import ButtonHomeScreen from './ButtonHomeScreen';
+import styledText from '../styledComponents/styledText';
 
 const HomeScreen = ({navigation}) => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Healthy Fitness Challenge</Text>
-      <Button
-        title="Challenge"
-        onPress={() => navigation.navigate('Challenge')}
-      />
-      <Button
-        title="Mes challenges"
-        onPress={() => navigation.navigate('Details')}
-      />
-      <Button
-        title="Calcul IMC"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
+    <ImageBackground
+      source={require('../assets/images/backgroundImage.jpg')}
+      style={styledBackgroundImage.image}>
+      <View style={styledView.view}>
+        <Text style={styledText.title}>Healthy Fitness Challenge</Text>
+        <ButtonHomeScreen navigation={navigation} />
+      </View>
+    </ImageBackground>
   );
 };
 
