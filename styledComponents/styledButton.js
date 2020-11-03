@@ -10,6 +10,7 @@ export default StyleSheet.create({
     borderColor: '#74C69D',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 25,
+    marginBottom: 25,
+    flexDirection: 'row',
   },
 });
