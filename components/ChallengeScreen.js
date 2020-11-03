@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import {media} from '../assets/images/index';
 import styledImage from '../styledComponents/styledImage';
 
 const ChallengeScreen = () => {
+  const [completed, setcompleted] = useState(false);
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -29,9 +30,16 @@ const ChallengeScreen = () => {
             <TouchableOpacity
               key={index.id}
               activeOpacity={1}
-              style={styledButton.buttonHome}
-              onPress={() => {}}>
+              style={
+                completed
+                  ? styledButton.buttonChallenge
+                  : styledButton.buttonChallengeCheck
+              }
+              onPress={() => {
+                setcompleted((index.completed = !index.completed));
+              }}>
               <Image style={styledImage.imageChallenge} source={index.img} />
+
               <Text style={styledText.text}>{index.title}</Text>
             </TouchableOpacity>
           ))}
