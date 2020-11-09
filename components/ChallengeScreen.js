@@ -5,18 +5,17 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
-  FlatList,
   ScrollView,
 } from 'react-native';
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import styledBackgroundImage from '../styledComponents/styledBackgroundImage';
 import styledButton from '../styledComponents/styledButton';
-import {media} from '../assets/images/index';
 import styledImage from '../styledComponents/styledImage';
+import {media} from '../assets/images';
 
 const ChallengeScreen = () => {
-  const [completed, setcompleted] = useState(false);
+  const [state, setstate] = useState(media);
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -24,22 +23,36 @@ const ChallengeScreen = () => {
       <ScrollView>
         <View style={styledView.view}>
           <Text style={styledText.title}>
-            Sélectionner un ou plusieurs challenges
+            Sélectionner un ou plusieurs exercices
           </Text>
-          {media.map((index) => (
+
+          {state.todos.map((index) => {
+            <Text style={styledText.text}>{index.title}</Text>;
+          })}
+          {state.todos.map((index) => (
             <TouchableOpacity
               key={index.id}
               activeOpacity={1}
               style={
-                completed
+                index.completed
                   ? styledButton.buttonChallenge
                   : styledButton.buttonChallengeCheck
               }
               onPress={() => {
-                setcompleted((index.completed = !index.completed));
+                const elementsIndex = state.todos.findIndex(
+                  (element) => element.id == index.id,
+                );
+                let newArray = [...state.todos];
+                newArray[elementsIndex] = {
+                  ...newArray[elementsIndex],
+                  completed: !newArray[elementsIndex].completed,
+                };
+                setstate({
+                  todos: newArray,
+                });
+                console.log(state);
               }}>
               <Image style={styledImage.imageChallenge} source={index.img} />
-
               <Text style={styledText.text}>{index.title}</Text>
             </TouchableOpacity>
           ))}
