@@ -16,21 +16,12 @@ import styledImage from '../styledComponents/styledImage';
 import {media} from '../assets/images';
 import {connect} from 'react-redux';
 
-const ChallengeScreen = ({dispatch, challengeExo}) => {
+const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
   const [state, setState] = useState(media);
 
-  console.log(challengeExo);
+  console.log(Object.values(challengeExo).length);
 
-  const isChecked = () => {
-    {
-      challengeExo.map((index) => {
-        style = {
-          buttonChallengeCheck,
-        };
-      });
-    }
-  };
-
+  const length = Object.values(challengeExo).length;
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -40,7 +31,12 @@ const ChallengeScreen = ({dispatch, challengeExo}) => {
           <Text style={styledText.title}>
             Sélectionner un ou plusieurs exercices
           </Text>
-
+          {length > 0 ? (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ConfigChallengeScreen')}>
+              <Text>valider</Text>
+            </TouchableOpacity>
+          ) : null}
           {state.data.map((index) => {
             <Text style={styledText.text}>{index.title}</Text>;
           })}
