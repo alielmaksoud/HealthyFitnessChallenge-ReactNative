@@ -10,6 +10,7 @@ import {
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import styledBackgroundImage from '../styledComponents/styledBackgroundImage';
+import {buttonChallenge} from '../styledComponents/styledButton';
 import styledButton from '../styledComponents/styledButton';
 import styledImage from '../styledComponents/styledImage';
 import {media} from '../assets/images';
@@ -19,6 +20,16 @@ const ChallengeScreen = ({dispatch, challengeExo}) => {
   const [state, setState] = useState(media);
 
   console.log(challengeExo);
+
+  const isChecked = () => {
+    {
+      challengeExo.map((index) => {
+        style = {
+          buttonChallengeCheck,
+        };
+      });
+    }
+  };
 
   return (
     <ImageBackground
@@ -38,7 +49,7 @@ const ChallengeScreen = ({dispatch, challengeExo}) => {
               key={index.id}
               activeOpacity={1}
               style={
-                state
+                !index.completed
                   ? styledButton.buttonChallenge
                   : styledButton.buttonChallengeCheck
               }
