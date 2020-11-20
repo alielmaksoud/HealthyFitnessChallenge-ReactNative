@@ -6,6 +6,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  viewConfig: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   scrollView: {
     flex: 1,
   },

@@ -19,8 +19,6 @@ import {connect} from 'react-redux';
 const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
   const [state, setState] = useState(media);
 
-  console.log(Object.values(challengeExo).length);
-
   const length = Object.values(challengeExo).length;
   return (
     <ImageBackground
@@ -34,7 +32,9 @@ const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
           {length > 0 ? (
             <TouchableOpacity
               onPress={() => navigation.navigate('ConfigChallengeScreen')}>
-              <Text>valider</Text>
+              <View style={styledButton.buttonValidate}>
+                <Text style={styledText.text}>Suivant</Text>
+              </View>
             </TouchableOpacity>
           ) : null}
           {state.data.map((index) => {
