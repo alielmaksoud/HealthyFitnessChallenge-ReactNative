@@ -59,7 +59,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    marginTop: 20,
   },
   buttonValidate: {
     backgroundColor: 'white',

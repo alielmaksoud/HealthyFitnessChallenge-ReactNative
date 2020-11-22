@@ -10,7 +10,6 @@ import {
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import styledBackgroundImage from '../styledComponents/styledBackgroundImage';
-import {buttonChallenge} from '../styledComponents/styledButton';
 import styledButton from '../styledComponents/styledButton';
 import styledImage from '../styledComponents/styledImage';
 import {media} from '../assets/images';
@@ -20,6 +19,7 @@ const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
   const [state, setState] = useState(media);
 
   const length = Object.values(challengeExo).length;
+  console.log(challengeExo);
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -53,7 +53,6 @@ const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
                 const elementsIndex = state.data.findIndex(
                   (element) => element.id == index.id,
                 );
-
                 dispatch({
                   type: 'TOGGLE_EXERCISES',
                   value: state.data[elementsIndex],
