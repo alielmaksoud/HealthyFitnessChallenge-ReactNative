@@ -82,7 +82,7 @@ const ConfigChallengeScreen = ({dispatch, configChallenge, challengeExo}) => {
 
 const mapStateToProps = (state) => {
   return {
-    configChallenge: state.configChallenge,
+    configChallenge: state.toggleConfigChallenge.configChallenge,
   };
 };
 

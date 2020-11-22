@@ -1,4 +1,7 @@
-import {createStore} from 'redux';
+import {combineReducers, createStore} from 'redux';
 import toggleChallenge from './reducers/challengeReducer';
+import toggleConfigChallenge from './reducers/configChallengeReducer';
 
-export default createStore(toggleChallenge);
+export default createStore(
+  combineReducers({toggleChallenge, toggleConfigChallenge}),
+);

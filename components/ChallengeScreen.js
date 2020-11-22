@@ -70,7 +70,7 @@ const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
 
 const mapStateToProps = (state) => {
   return {
-    challengeExo: state.challengeExo,
+    challengeExo: state.toggleChallenge.challengeExo,
   };
 };
 
