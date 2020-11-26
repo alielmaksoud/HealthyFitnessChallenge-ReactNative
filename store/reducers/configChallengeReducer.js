@@ -1,12 +1,14 @@
+import {TOGGLE_CONFIG_CHALLENGE} from '../constants/ActionType';
+
 const initialState = {configChallenge: []};
 
 function toggleConfigChallenge(state = initialState, action) {
   let nextState;
   switch (action.type) {
-    case 'TOGGLE_CONFIG_CHALLENGE':
+    case TOGGLE_CONFIG_CHALLENGE:
       nextState = {
         ...state,
-        configChallenge: [...state.configChallenge, 'action.value'],
+        configChallenge: [...state.configChallenge, action.value],
       };
       return nextState || state;
     default:

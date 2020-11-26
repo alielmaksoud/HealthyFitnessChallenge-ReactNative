@@ -1,9 +1,10 @@
+import {TOGGLE_EXERCISES} from '../constants/ActionType';
 const initialState = {challengeExo: []};
 
 function toggleChallenge(state = initialState, action) {
   let nextState;
   switch (action.type) {
-    case 'TOGGLE_EXERCISES':
+    case TOGGLE_EXERCISES:
       const challengeIndex = state.challengeExo.findIndex(
         (item) => item.id === action.value.id,
       );

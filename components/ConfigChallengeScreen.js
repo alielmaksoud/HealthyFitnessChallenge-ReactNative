@@ -10,8 +10,8 @@ import styledButton from '../styledComponents/styledButton';
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import {connect} from 'react-redux';
-
-const ConfigChallengeScreen = ({dispatch, configChallenge, challengeExo}) => {
+import {toggleConfigChallenge} from '../store/actions';
+const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
   const [value, setValue] = useState({
     name: '',
     days: '',
@@ -36,12 +36,14 @@ const ConfigChallengeScreen = ({dispatch, configChallenge, challengeExo}) => {
             style={styledButton.buttonConfig}
             onChangeText={(text) => setValue({...value, days: text})}
             value={value.days}
+            keyboardType={'numeric'}
           />
           <Text style={styledText.text}>Premiere repetition</Text>
           <TextInput
             style={styledButton.buttonConfig}
             onChangeText={(text) => setValue({...value, rep: text})}
             value={value.rep}
+            keyboardType={'numeric'}
           />
           <Text style={styledText.text}>Repetition en + par jours</Text>
           <TextInput
@@ -49,13 +51,13 @@ const ConfigChallengeScreen = ({dispatch, configChallenge, challengeExo}) => {
             style={styledButton.buttonConfig}
             onChangeText={(text) => setValue({...value, reps: text})}
             value={value.reps}
+            keyboardType={'numeric'}
           />
 
           <TouchableOpacity
             onPress={() => {
-              const action = {type: 'TOGGLE_CONFIG_CHALLENGE', value: value};
-              dispatch(action);
-              console.log(value);
+              toggleConfigChallenge(value);
+              navigation.navigate('MyChallengeScreen');
             }}>
             <View style={styledButton.buttonValidate}>
               <Text style={styledText.text}>Suivant</Text>
@@ -65,12 +67,13 @@ const ConfigChallengeScreen = ({dispatch, configChallenge, challengeExo}) => {
         <View style={styledView.view}>
           <View style={styledButton.buttonRecap}>
             <View style={styledView.view}>
-              <Text style={styledText.text}>CHALLENGE {value.days} JOURS</Text>
+              <Text style={styledText.text}>Challenge {value.name}</Text>
+              <Text style={styledText.text}>Durée {value.days} JOURS</Text>
               <Text style={styledText.text}>
-                Aujourd'hui {value.rep} repetitions
+                Aujourd'hui {value.rep} répetitions
               </Text>
               <Text style={styledText.text}>
-                +{value.reps} repetitions par jours
+                +{value.reps} répetitions par jours
               </Text>
             </View>
           </View>
@@ -86,4 +89,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ConfigChallengeScreen);
+export default connect(mapStateToProps, {toggleConfigChallenge})(
+  ConfigChallengeScreen,
+);

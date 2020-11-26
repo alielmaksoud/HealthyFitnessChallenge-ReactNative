@@ -11,6 +11,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  viewTodo: {
+    backgroundColor: 'white',
+    height: 65,
+    width: '98%',
+    borderBottomWidth: 1.5,
+    borderLeftWidth: 8,
+    borderLeftColor: 'black',
+    borderBottomColor: 'gray',
+    marginBottom: 10,
+    paddingLeft: 5,
+  },
   scrollView: {
     flex: 1,
   },

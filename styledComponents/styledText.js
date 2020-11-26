@@ -14,4 +14,14 @@ export default StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
   },
+  textBlack: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'capitalize',
+  },
+  textGray: {
+    color: 'gray',
+    fontSize: 15,
+  },
 });

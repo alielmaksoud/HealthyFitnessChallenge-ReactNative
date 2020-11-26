@@ -14,12 +14,12 @@ import styledButton from '../styledComponents/styledButton';
 import styledImage from '../styledComponents/styledImage';
 import {media} from '../assets/images';
 import {connect} from 'react-redux';
+import {toggleExercises} from '../store/actions';
 
-const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
+const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
   const [state, setState] = useState(media);
 
   const length = Object.values(challengeExo).length;
-  console.log(challengeExo);
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -53,10 +53,7 @@ const ChallengeScreen = ({dispatch, challengeExo, navigation}) => {
                 const elementsIndex = state.data.findIndex(
                   (element) => element.id == index.id,
                 );
-                dispatch({
-                  type: 'TOGGLE_EXERCISES',
-                  value: state.data[elementsIndex],
-                });
+                toggleExercises(state.data[elementsIndex]);
               }}>
               <Image style={styledImage.imageChallenge} source={index.img} />
               <Text style={styledText.text}>{index.title}</Text>
@@ -74,4 +71,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ChallengeScreen);
+export default connect(mapStateToProps, {toggleExercises})(ChallengeScreen);
