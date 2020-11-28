@@ -14,7 +14,7 @@ const MyChallengeScreen = ({configChallenge}) => {
   const articlesJsx = Object.values(state).map((item, index) => (
     <View style={styledView.viewTodo} key={index}>
       <Text style={styledText.textBlack}>{item.name}</Text>
-      <Text style={styledText.textGray}>Jours {item.days}</Text>
+      <Text style={styledText.textGray}>{item.days} Jours</Text>
     </View>
   ));
 

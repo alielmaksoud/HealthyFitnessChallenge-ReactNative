@@ -15,7 +15,7 @@ const ButtonHomeScreen = ({navigation}) => {
       <TouchableOpacity
         activeOpacity={1}
         style={styledButton.buttonHome}
-        onPress={() => navigation.navigate('Challenge')}>
+        onPress={() => navigation.navigate('MyChallengeScreen')}>
         <Text style={styledText.text}>Mes challenges</Text>
       </TouchableOpacity>
       <TouchableOpacity

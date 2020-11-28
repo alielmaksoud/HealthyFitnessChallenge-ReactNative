@@ -18,7 +18,7 @@ import {toggleExercises} from '../store/actions';
 
 const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
   const [state, setState] = useState(media);
-
+  console.log(challengeExo);
   const length = Object.values(challengeExo).length;
   return (
     <ImageBackground
@@ -45,7 +45,7 @@ const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
               key={index.id}
               activeOpacity={1}
               style={
-                !index.completed
+                !challengeExo.completed
                   ? styledButton.buttonChallenge
                   : styledButton.buttonChallengeCheck
               }
