@@ -20,6 +20,16 @@ const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
   const [state, setState] = useState(media);
   console.log(challengeExo);
   const length = Object.values(challengeExo).length;
+
+  const handleStyle = (index) => {
+    const elementsIndex = state.data.findIndex(
+      (element) => element.id == index.id,
+    );
+    return !state.data[elementsIndex].completed
+      ? styledButton.buttonChallenge
+      : styledButton.buttonChallengeCheck;
+  };
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -44,16 +54,18 @@ const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
             <TouchableOpacity
               key={index.id}
               activeOpacity={1}
-              style={
-                !challengeExo.completed
-                  ? styledButton.buttonChallenge
-                  : styledButton.buttonChallengeCheck
-              }
+              style={handleStyle(index)}
               onPress={() => {
                 const elementsIndex = state.data.findIndex(
                   (element) => element.id == index.id,
                 );
                 toggleExercises(state.data[elementsIndex]);
+                let newArray = [...state.data];
+                newArray[elementsIndex] = {
+                  ...newArray[elementsIndex],
+                  completed: !newArray[elementsIndex].completed,
+                };
+                setState({data: newArray});
               }}>
               <Image style={styledImage.imageChallenge} source={index.img} />
               <Text style={styledText.text}>{index.title}</Text>
