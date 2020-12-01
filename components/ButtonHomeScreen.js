@@ -2,28 +2,32 @@ import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import styledButton from '../styledComponents/styledButton';
 import styledText from '../styledComponents/styledText';
+import ButtonHome from './ButtonHome';
 
 const ButtonHomeScreen = ({navigation}) => {
   return (
     <>
-      <TouchableOpacity
-        activeOpacity={1}
+      <ButtonHome
         style={styledButton.buttonHome}
-        onPress={() => navigation.navigate('Challenge')}>
-        <Text style={styledText.text}>Challenge</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={1}
+        styleText={styledText.text}
+        navigation={navigation}
+        textNav={'Challenge'}
+        name={'Challenge'}
+      />
+      <ButtonHome
         style={styledButton.buttonHome}
-        onPress={() => navigation.navigate('MyChallengeScreen')}>
-        <Text style={styledText.text}>Mes challenges</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={1}
+        styleText={styledText.text}
+        navigation={navigation}
+        textNav={'MyChallengeScreen'}
+        name={'Mes challenges'}
+      />
+      <ButtonHome
         style={styledButton.buttonHome}
-        onPress={() => navigation.navigate('Challenge')}>
-        <Text style={styledText.text}>Calcul IMC</Text>
-      </TouchableOpacity>
+        styleText={styledText.text}
+        navigation={navigation}
+        textNav={'MyChallengeScreen'}
+        name={'Calcul IMC'}
+      />
     </>
   );
 };
