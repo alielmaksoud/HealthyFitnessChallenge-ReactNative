@@ -17,6 +17,7 @@ const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
     days: '',
     rep: '',
     reps: '',
+    miniDays: 0,
   });
   return (
     <ImageBackground
@@ -56,6 +57,7 @@ const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
 
           <TouchableOpacity
             onPress={() => {
+              // setValue({...value, miniDays: parseInt(value.days, 10) + 1});
               toggleConfigChallenge(value);
               navigation.navigate('MyChallengeScreen');
             }}>

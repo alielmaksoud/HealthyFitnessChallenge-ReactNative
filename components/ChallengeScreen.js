@@ -18,6 +18,8 @@ import {toggleExercises} from '../store/actions';
 
 const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
   const [state, setState] = useState(media);
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
   console.log(challengeExo);
   const length = Object.values(challengeExo).length;
 
@@ -59,13 +61,13 @@ const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
                 const elementsIndex = state.data.findIndex(
                   (element) => element.id == index.id,
                 );
-                toggleExercises(state.data[elementsIndex]);
                 let newArray = [...state.data];
                 newArray[elementsIndex] = {
                   ...newArray[elementsIndex],
                   completed: !newArray[elementsIndex].completed,
                 };
                 setState({data: newArray});
+                toggleExercises(state.data[elementsIndex]);
               }}>
               <Image style={styledImage.imageChallenge} source={index.img} />
               <Text style={styledText.text}>{index.title}</Text>

@@ -1,35 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import {ImageBackground, Text, View, TouchableOpacity} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {min} from 'react-native-reanimated';
 import {connect} from 'react-redux';
 import styledBackgroundImage from '../styledComponents/styledBackgroundImage';
-import styledButton from '../styledComponents/styledButton';
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 
 const MyChallengeScreen = ({configChallenge}) => {
-  const [state, setstate] = useState(configChallenge);
-  const [count, setCount] = useState(0);
+  const [state, setState] = useState(configChallenge);
 
-  const minInteger = Object.values(state).map((item, index) => {
-    let maxInteger = parseInt(item.days, 10);
-    let minInteger = maxInteger - maxInteger;
-
-    return minInteger;
+  useEffect(() => {
+    console.log(state);
   });
-
-  console.log(minInteger);
 
   const articlesJsx = Object.values(state).map((item, index) => (
     <TouchableOpacity
       activeOpacity={1}
       style={styledView.viewTodo}
-      onPress={() => setCount(count + 1)}
+      onPress={() => console.log('navigate')}
       key={index}>
       <Text style={styledText.textBlack}>{item.name}</Text>
       <Text style={styledText.textGray}>
-        {minInteger[index]} {count} Jours
+        Jours restant {configChallenge[index].days}
       </Text>
     </TouchableOpacity>
   ));

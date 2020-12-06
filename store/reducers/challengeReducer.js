@@ -1,4 +1,4 @@
-import {TOGGLE_EXERCISES} from '../constants/ActionType';
+import {TOGGLE_EXERCISES, DELETE_EXERCISES} from '../constants/ActionType';
 const initialState = {challengeExo: []};
 
 function toggleChallenge(state = initialState, action) {
@@ -23,6 +23,12 @@ function toggleChallenge(state = initialState, action) {
           challengeExo: [...state.challengeExo, action.value],
         };
       }
+      return nextState || state;
+    case DELETE_EXERCISES:
+      console.log(state.challengeExo);
+      nextState = {
+        challengeExo: [],
+      };
       return nextState || state;
     default:
       return state;
