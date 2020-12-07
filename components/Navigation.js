@@ -4,6 +4,7 @@ import ChallengeScreen from './ChallengeScreen';
 import HomeScreen from './HomeScreen';
 import ConfigChallengeScreen from './ConfigChallengeScreen';
 import MyChallengeScreen from './MyChallengeScreen';
+import DetailsChallengeScreen from './DetailsChallengeScreen';
 
 const Navigation = (props) => {
   const Stack = createStackNavigator();
@@ -57,6 +58,21 @@ const Navigation = (props) => {
       <Stack.Screen
         name="MyChallengeScreen"
         component={MyChallengeScreen}
+        options={{
+          title: '',
+          headerStyle: {
+            backgroundColor: '#52B788',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="DetailsChallengeScreen"
+        component={DetailsChallengeScreen}
         options={{
           title: '',
           headerStyle: {

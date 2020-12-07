@@ -6,7 +6,7 @@ import styledBackgroundImage from '../styledComponents/styledBackgroundImage';
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 
-const MyChallengeScreen = ({configChallenge}) => {
+const MyChallengeScreen = ({configChallenge, navigation}) => {
   const [state, setState] = useState(configChallenge);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const MyChallengeScreen = ({configChallenge}) => {
     <TouchableOpacity
       activeOpacity={1}
       style={styledView.viewTodo}
-      onPress={() => console.log('navigate')}
+      onPress={() => navigation.navigate('DetailsChallengeScreen')}
       key={index}>
       <Text style={styledText.textBlack}>{item.name}</Text>
       <Text style={styledText.textGray}>
