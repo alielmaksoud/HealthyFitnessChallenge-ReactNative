@@ -1,10 +1,10 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import ChallengeScreen from './ChallengeScreen';
-import HomeScreen from './HomeScreen';
-import ConfigChallengeScreen from './ConfigChallengeScreen';
-import MyChallengeScreen from './MyChallengeScreen';
-import DetailsChallengeScreen from './DetailsChallengeScreen';
+import ChallengeScreen from '../views/ChallengeScreen';
+import HomeScreen from '../views/HomeScreen';
+import ConfigChallengeScreen from '../views/ConfigChallengeScreen';
+import MyChallengeScreen from '../views/MyChallengeScreen';
+import DetailsChallengeScreen from '../views/DetailsChallengeScreen';
 
 const Navigation = (props) => {
   const Stack = createStackNavigator();

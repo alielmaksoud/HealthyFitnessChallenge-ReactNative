@@ -1,15 +1,52 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
+import {connect} from 'react-redux';
+import styledButton from '../styledComponents/styledButton';
+import styledText from '../styledComponents/styledText';
+import BtnHome from './BtnHome';
+import {deleteExercises} from '../store/actions';
 
-const ButtonHome = ({style, styleText, navigation, textNav, name}) => {
+const ButtonHome = ({navigation, deleteExercises}) => {
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // The screen is focused
+      // Call any action
+      deleteExercises();
+    });
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      style={style}
-      onPress={() => navigation.navigate(textNav)}>
-      <Text style={styleText}>{name}</Text>
-    </TouchableOpacity>
+    <>
+      <BtnHome
+        style={styledButton.buttonHome}
+        styleText={styledText.text}
+        navigation={navigation}
+        textNav={'Challenge'}
+        name={'Challenge'}
+      />
+      <BtnHome
+        style={styledButton.buttonHome}
+        styleText={styledText.text}
+        navigation={navigation}
+        textNav={'MyChallengeScreen'}
+        name={'Mes challenges'}
+      />
+      <BtnHome
+        style={styledButton.buttonHome}
+        styleText={styledText.text}
+        navigation={navigation}
+        textNav={'MyChallengeScreen'}
+        name={'Calcul IMC'}
+      />
+    </>
   );
 };
 
-export default ButtonHome;
+const mapStateToProps = (state) => {
+  return {
+    challengeExo: state.toggleChallenge.challengeExo,
+  };
+};
+
+export default connect(mapStateToProps, {deleteExercises})(ButtonHome);
