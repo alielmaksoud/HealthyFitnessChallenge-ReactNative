@@ -19,7 +19,9 @@ const MyChallengeScreen = ({configChallenge, navigation}) => {
       style={styledView.viewTodo}
       onPress={() => navigation.navigate('DetailsChallengeScreen')}
       key={index}>
-      <Text style={styledText.textBlack}>{item.name}</Text>
+      <Text style={styledText.textBlack}>
+        {item.name} {index}
+      </Text>
       <Text style={styledText.textGray}>
         Jours restant {configChallenge[index].days}
       </Text>

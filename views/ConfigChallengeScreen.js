@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import {toggleConfigChallenge} from '../store/actions';
 const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
   const [value, setValue] = useState({
+    id: 0,
     name: '',
     days: '',
     rep: '',
@@ -57,7 +58,6 @@ const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
 
           <TouchableOpacity
             onPress={() => {
-              // setValue({...value, miniDays: parseInt(value.days, 10) + 1});
               toggleConfigChallenge(value);
               navigation.navigate('MyChallengeScreen');
             }}>
