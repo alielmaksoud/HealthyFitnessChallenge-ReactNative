@@ -9,18 +9,18 @@ import styledView from '../styledComponents/styledView';
 const MyChallengeScreen = ({configChallenge, navigation}) => {
   const [state, setState] = useState(configChallenge);
 
-  useEffect(() => {
-    console.log(state);
-  });
+  const _displayDetailForFilm = (idChallenge) => {
+    navigation.navigate('DetailsChallengeScreen', {idChallenge: idChallenge});
+  };
 
   const articlesJsx = Object.values(state).map((item, index) => (
     <TouchableOpacity
       activeOpacity={1}
       style={styledView.viewTodo}
-      onPress={() => navigation.navigate('DetailsChallengeScreen')}
+      onPress={() => _displayDetailForFilm(item.idChallenge)}
       key={index}>
       <Text style={styledText.textBlack}>
-        {item.name} {index}
+        {item.name} {item.id}
       </Text>
       <Text style={styledText.textGray}>
         Jours restant {configChallenge[index].days}

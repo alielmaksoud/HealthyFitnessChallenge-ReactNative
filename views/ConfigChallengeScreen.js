@@ -11,15 +11,30 @@ import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import {connect} from 'react-redux';
 import {toggleConfigChallenge} from '../store/actions';
-const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
+const ConfigChallengeScreen = ({
+  navigation,
+  toggleConfigChallenge,
+  configChallenge,
+  challengeExo,
+}) => {
   const [value, setValue] = useState({
-    id: 0,
+    idChallenge: 0,
     name: '',
     days: '',
     rep: '',
     reps: '',
     miniDays: 0,
   });
+
+  let combineArray = Object.assign(value, challengeExo);
+
+  // recuperer les challenges precedent, trouver l'id le plus haut et incrementer
+  const maxValueOfId = Math.max(
+    ...configChallenge.map((item) => item.idChallenge),
+    0,
+  );
+  let id = maxValueOfId + 1;
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpg')}
@@ -58,7 +73,7 @@ const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
 
           <TouchableOpacity
             onPress={() => {
-              toggleConfigChallenge(value);
+              toggleConfigChallenge({...value, idChallenge: id});
               navigation.navigate('MyChallengeScreen');
             }}>
             <View style={styledButton.buttonValidate}>
@@ -88,6 +103,7 @@ const ConfigChallengeScreen = ({navigation, toggleConfigChallenge}) => {
 const mapStateToProps = (state) => {
   return {
     configChallenge: state.toggleConfigChallenge.configChallenge,
+    challengeExo: state.toggleChallenge.challengeExo,
   };
 };
 
