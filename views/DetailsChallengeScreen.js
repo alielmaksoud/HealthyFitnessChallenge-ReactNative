@@ -1,25 +1,37 @@
 import React from 'react';
+import {useState} from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
+import styledText from '../styledComponents/styledText';
+import styledView from '../styledComponents/styledView';
+import {media} from '../assets/images';
 
 const DetailsChallengeScreen = ({challengeExo, configChallenge, route}) => {
+  const [state, setState] = useState(media);
+
   const challengeIndex = configChallenge.findIndex(
     (item) => item.idChallenge === route.params.idChallenge,
   );
 
-  const challenge = configChallenge[challengeIndex];
+  console.log(configChallenge);
 
-  const articlesJsx = Object.values(
-    configChallenge[challengeIndex],
-  ).map((item, index) => (
-    <Text>{item.title === undefined ? '' : 'jours restant ' + item.title}</Text>
-  ));
+  const challenge = configChallenge[challengeIndex][0].img;
+
+  const articlesJsx = Object.values(configChallenge[challengeIndex]).map(
+    (item, index) => (
+      <Text key={index}>
+        {/* {item.title === undefined ? '' : 'jours restant ' + item.title} */}
+        {item.img}
+      </Text>
+    ),
+  );
 
   return (
-    <View>
-      <Text>{challenge.name}</Text>
-      <Text>{challenge.days}</Text>
-      <Text>{challenge.title}</Text>
+    <View style={styledView.view}>
+      <Text style={styledText.text}>Challenge {challenge.name}</Text>
+      <Text style={styledText.text}>Nombre de jours : {challenge.days}</Text>
+      <Text style={styledText.text}>Premiere répétition {challenge.rep}</Text>
+      <Text style={styledText.text}>Repetition en plus {challenge.reps}</Text>
       {articlesJsx}
     </View>
   );
