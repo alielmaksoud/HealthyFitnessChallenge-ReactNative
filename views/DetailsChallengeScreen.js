@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import {media} from '../assets/images';
+import {Image} from 'react-native';
+import styledImage from '../styledComponents/styledImage';
 
 const DetailsChallengeScreen = ({challengeExo, configChallenge, route}) => {
   const [state, setState] = useState(media);
@@ -13,16 +15,16 @@ const DetailsChallengeScreen = ({challengeExo, configChallenge, route}) => {
     (item) => item.idChallenge === route.params.idChallenge,
   );
 
-  console.log(configChallenge);
-
-  const challenge = configChallenge[challengeIndex][0].img;
+  const challenge = configChallenge[challengeIndex];
 
   const articlesJsx = Object.values(configChallenge[challengeIndex]).map(
     (item, index) => (
-      <Text key={index}>
-        {/* {item.title === undefined ? '' : 'jours restant ' + item.title} */}
-        {item.img}
-      </Text>
+      <>
+        <Text key={index}>
+          {item.title === undefined ? '' : 'jours restant ' + item.title}
+        </Text>
+        <Image source={item.img} />
+      </>
     ),
   );
 
