@@ -1,12 +1,10 @@
 import React from 'react';
 import {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {connect} from 'react-redux';
 import styledText from '../styledComponents/styledText';
 import styledView from '../styledComponents/styledView';
 import {media} from '../assets/images';
-import {Image} from 'react-native';
-import styledImage from '../styledComponents/styledImage';
 
 const DetailsChallengeScreen = ({challengeExo, configChallenge, route}) => {
   const [state, setState] = useState(media);
