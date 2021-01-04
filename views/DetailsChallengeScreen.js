@@ -18,22 +18,28 @@ const DetailsChallengeScreen = ({challengeExo, configChallenge, route}) => {
   const articlesJsx = Object.values(configChallenge[challengeIndex]).map(
     (item, index) => (
       <>
-        <Text key={index}>
-          {item.title === undefined ? '' : 'jours restant ' + item.title}
-        </Text>
-        <Image source={item.img} />
+        <Image key={index} source={item.img} />
       </>
     ),
   );
+  console.log(configChallenge);
 
   return (
-    <View style={styledView.view}>
-      <Text style={styledText.text}>Challenge {challenge.name}</Text>
-      <Text style={styledText.text}>Nombre de jours : {challenge.days}</Text>
-      <Text style={styledText.text}>Premiere répétition {challenge.rep}</Text>
-      <Text style={styledText.text}>Repetition en plus {challenge.reps}</Text>
-      {articlesJsx}
-    </View>
+    <>
+      <View style={styledView.viewDetails}>
+        <Text style={styledText.text}>
+          Jours {challenge.miniDays}/{challenge.days}
+        </Text>
+      </View>
+      <View style={styledView.flexView}>
+        <View style={styledView.viewDetails}>
+          <Text style={styledText.text}>Edit </Text>
+          <Text style={styledText.text}>Rappel </Text>
+          <Text style={styledText.text}>Video</Text>
+        </View>
+      </View>
+      <View style={styledView.view}>{articlesJsx}</View>
+    </>
   );
 };
 

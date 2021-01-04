@@ -25,4 +25,12 @@ export default StyleSheet.create({
   scrollView: {
     flex: 1,
   },
+  flexView: {
+    flex: 1,
+  },
+  viewDetails: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
 });

@@ -50,7 +50,9 @@ const ChallengeScreen = ({challengeExo, navigation, toggleExercises}) => {
             </TouchableOpacity>
           ) : null}
           {state.data.map((index) => {
-            <Text style={styledText.text}>{index.title}</Text>;
+            <Text key={index} style={styledText.text}>
+              {index.title}
+            </Text>;
           })}
           {state.data.map((index) => (
             <TouchableOpacity
