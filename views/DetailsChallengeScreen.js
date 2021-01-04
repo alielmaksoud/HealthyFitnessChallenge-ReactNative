@@ -37,8 +37,8 @@ const DetailsChallengeScreen = ({challengeExo, configChallenge, route}) => {
           <Text style={styledText.text}>Rappel </Text>
           <Text style={styledText.text}>Video</Text>
         </View>
+        <View style={styledView.view}>{articlesJsx}</View>
       </View>
-      <View style={styledView.view}>{articlesJsx}</View>
     </>
   );
 };
